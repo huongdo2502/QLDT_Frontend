@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Danh sách thành viên - QLDT</title>
+    <!-- Thư viện SweetAlert2 & Font Awesome -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- 1. Khung giao diện chung -->
+    <link rel="stylesheet" href="css/style.css">
+    <!-- 2. Style riêng cho trang Thành Viên -->
+    <link rel="stylesheet" href="css/member.css">
+</head>
+<body>
+    <div class="row">
+        <!-- Header Row -->
+        <div class="row header-row">
+            <div class="logo-col" id="logoCol">
+                <span class="logo-text logo-full">QUAN-LY-DAY-TRO</span>
+                <span class="logo-text logo-short">QLDT</span>
+            </div>
+            
+            <div class="bars-col">
+                <button type="button" class="btn-bars">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </div>   
+        </div>
+
+        <!-- Sidebar -->
+        <div class="sidebar" id="sidebar">
+            <div class="row">
+                <div class="nav">
+                    <a href="index.html"><i class="fas fa-home"></i><span>Trang Chủ/ Menu</span></a>
+                </div>
+            </div>
+            <div class="row">
+                <div class="nav">
+                    <a href="room.html"><i class="fa-solid fa-door-open"></i><span>Danh Sách Phòng</span></a>
+                </div>
+            </div>            
+            <div class="row">
+                <div class="nav">
+                    <a href="contract.html" ><i class="fa-solid fa-file-contract"></i><span>Danh Sách Hợp Đồng</span></a>
+                </div>
+            </div>
+            <div class="row">
+                <div class="nav">
+                    <a href="member.html" class="active"><i class="fa-solid fa-users"></i><span>Danh Sách Thành Viên</span></a>
+                </div>
+            </div>
+            <div class="row">
+                <div class="nav">
+                    <a href="invoice.html"><i class="fa-solid fa-receipt"></i><span>Danh Sách Phiếu Thu</span></a>
+                </div>
+            </div> 
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <div class="row">
+                <div class="section-title">
+                    <h2>THÔNG TIN THÀNH VIÊN</h2>
+                </div>    
+            </div>
+
+            <!-- Dòng Mã THÀNH VIÊN, MÃ HỢP ĐỒNG -->
+            <div class="row form-row">
+                <label class="col-xs-4 col-sm-3 col-md-2">Mã Thành Viên :</label>
+                <div class="col-xs-8 col-sm-9 col-md-4 input-group-col">
+                    <input type="text" name="member_nbr" value="">  
+                </div>
+
+                <label class="col-xs-4 col-sm-3 col-md-2">Mã Hợp Đồng :</label>
+                <div class="col-xs-8 col-sm-9 col-md-4">
+                    <select name="contract_nbr" id="contract_nbr">  
+                        <option value="">-- Chọn mã hợp đồng --</option>
+                        <option value="HD001">HD001</option>
+                        <option value="HD002">HD002</option>
+                    </select>
+                </div>                
+            </div>
+
+            <!-- HỌ VÀ TÊN, LÀ CHỦ HỘ  -->
+            <div class="row form-row">
+                <label class="col-xs-4 col-sm-3 col-md-2">Họ Và Tên  :</label>
+                <div class="col-xs-8 col-sm-9 col-md-4 input-group-col">
+                    <input type="text" name="full_name" value="">   
+                </div>
+
+                <label class="col-xs-4 col-sm-3 col-md-2" for="is_primary_tenant">Là Chủ Hộ:</label>
+                <div class="col-xs-8 col-sm-9 col-md-4">
+                    <input type="checkbox" name="is_primary_tenant" id="is_primary_tenant" value="true" checked style="width: auto; margin-top: 5px;">
+                </div>
+            </div>
+
+            <!-- CCCD, NGÀY SINH -->
+            <div class="row form-row">
+                <label class="col-xs-4 col-sm-3 col-md-2">Căn Cước Công Dân :</label>
+                <div class="col-xs-8 col-sm-9 col-md-4 input-group-col">
+                    <input type="text" name="national_id" value=""> 
+                </div>
+
+                <label class="col-xs-4 col-sm-3 col-md-2" for="birth_date">Ngày Sinh :</label>
+                <div class="col-xs-8 col-sm-9 col-md-4">
+                    <input type="date" name="birth_date" id="birth_date" value="">
+                </div>
+            </div>
+
+            <!-- GIỚI TÍNH, SỐ ĐIỆN THOẠI -->
+            <div class="row form-row">
+                <label class="col-xs-4 col-sm-3 col-md-2">Giới Tính :</label>
+                <div class="col-xs-8 col-sm-9 col-md-4 input-group-col">
+                    <select name="gender">
+                        <option value="">-- Chọn giới tính --</option>
+                        <option value="Nam">Nam</option>
+                        <option value="Nữ">Nữ</option>
+                        <option value="Khác">Khác</option>
+                    </select>
+                </div>
+
+                <label class="col-xs-4 col-sm-3 col-md-2" for="phone">Số Điện Thoại :</label>
+                <div class="col-xs-8 col-sm-9 col-md-4">
+                    <input type="tel" name="phone" id="phone" value="">
+                </div>
+            </div>
+
+            <!-- Dòng tiền rác, tiền an ninh -->
+            <div class="row form-row">
+                <label class="col-xs-4 col-sm-3 col-md-2">Địa Chỉ :</label>
+                <div class="col-xs-8 col-sm-9 col-md-4 input-group-col">
+                    <input type="text" name="address" value="">
+                </div>
+
+                <label class="col-xs-4 col-sm-3 col-md-2" for="status">Trạng Thái :</label>
+                <div class="col-xs-8 col-sm-9 col-md-4">
+                    <select name="status" id="status">
+                        <option value="">-- Chọn trạng thái --</option>
+                        <option value="DANG_O">DANG_O</option>
+                        <option value="CHUYEN_DI">CHUYEN_DI</option>
+                        <option value="CHO_NHAN_PHONG">CHO_NHAN_PHONG</option>
+                    </select>
+                </div>
+            </div>
+    
+            <!-- Nhóm nút bấm -->
+            <div class="row btn-group" style="margin-top: 15px; font-size: 0;">
+                <button type="button" class="btn-add" id="btn-add">Thêm Mới</button>
+                <button type="button" class="btn-update" id="btn-update">Cập Nhật</button>
+                <button type="button" class="btn-delete" id="btn-delete">Xóa</button>
+                <button type="button" class="btn-cancel" id="btn-cancel">Hủy</button>
+            </div>
+
+            <div class="row" style="margin-top: 20px;">
+                <div class="table-title">
+                    <h2>DANH SÁCH THÀNH VIÊN</h2>
+                </div>
+            </div>   
+             
+            <!-- Đã thêm class table-container để nhận CSS -->
+            <div class="row table member">
+                 <table>
+                        <thead>
+                            <tr>
+                                <th>Mã thành viên</th>
+                                <th>Mã hợp đồng</th>
+                                <th>Họ tên</th>
+                                <th>Là chủ hộ</th>
+                                <th>Căn cước công dân</th>
+                                <th>Ngày sinh</th>
+                                <th>Giới tính</th>
+                                <th>Số điện thoại</th>
+                                <th>Địa chỉ</th>
+                                <th>Trạng thái</th>
+                            </tr>
+                        </thead>
+                        <tbody id="member-table-body">  
+                            <tr>
+                                <td>TV001</td>
+                                <td>HD001</td>
+                                <td>Nguyễn Anh Quân</td>
+                                <td>Có</td>
+                                <td>012345678901</td>
+                                <td>15/05/1995</td>
+                                <td>Nam</td>
+                                <td>0901234567</td>
+                                <td>Bình Dương</td>
+                                <td>DANG_O</td>
+                            </tr>
+                            <tr>
+                                <td>TV002</td>
+                                <td>HD001</td>
+                                <td>Nguyễn Minh Hải</td>
+                                <td>Không</td>
+                                <td>098765432102</td>
+                                <td>20/10/1992</td>
+                                <td>Nam</td>
+                                <td>0912345672</td>
+                                <td>Đồng Nai</td>
+                                <td>DANG_O</td>
+                            </tr>
+                            <tr>
+                                <td>TV003</td>
+                                <td>HD001</td>
+                                <td>Trần Thanh Hạnh</td>
+                                <td>Không</td>
+                                <td>098765432103</td>
+                                <td>20/10/1993</td>
+                                <td>Nữ</td>
+                                <td>0912345673</td>
+                                <td>Đồng Nai</td>
+                                <td>DANG_O</td>
+                            </tr>
+                            <tr>
+                                <td>TV004</td>
+                                <td>HD004</td>
+                                <td>Trần Trúc Quỳnh</td>
+                                <td>Có</td>
+                                <td>098765432104</td>
+                                <td>20/10/1994</td>
+                                <td>Nữ</td>
+                                <td>0912345674</td>
+                                <td>Đồng Nai</td>
+                                <td>DANG_O</td>
+                            </tr>
+                            <tr>
+                                <td>TV005</td>
+                                <td>HD005</td>
+                                <td>Trần Thu An</td>
+                                <td>Không</td>
+                                <td>098765432106</td>
+                                <td>20/10/1996</td>
+                                <td>Nữ</td>
+                                <td>0912345676</td>
+                                <td>Đồng Nai</td>
+                                <td>DANG_O</td>
+                            </tr>
+                            <tr>
+                                <td>TV006</td>
+                                <td>HD006</td>
+                                <td>Trần Thanh Binh</td>
+                                <td>Không</td>
+                                <td>098765432106</td>
+                                <td>20/10/1997</td>
+                                <td>Nữ</td>
+                                <td>0912345677</td>
+                                <td>Đồng Nai</td>
+                                <td>DANG_O</td>
+                            </tr>
+                        </tbody>
+                    </table>
+            </div>
+        </div>
+    </div>
+    <script src="js/member.js"></script>
+</body>
+</html>
