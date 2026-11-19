@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Danh sách phòng - QLDT</title>
+    <!-- Thư viện SweetAlert2 & Font Awesome -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- 1. Khung giao diện chung -->
+    <link rel="stylesheet" href="css/style.css">
+    <!-- 2. Style riêng cho trang Phòng -->
+    <link rel="stylesheet" href="css/room.css">
+</head>
+<body>
+    <div class="row">
+    <!-- Header Row -->
+        <div class="row header-row">
+            <div class="logo-col" id="logoCol">
+                <span class="logo-text logo-full">QUAN-LY-DAY-TRO</span>
+                <span class="logo-text logo-short">QLDT</span>
+            </div>
+            
+            <div class="bars-col">
+                <button type="button" class="btn-bars">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </div>   
+        </div>
+
+        <!-- Sidebar -->
+        <div class="sidebar" id="sidebar">
+            <div class="row">
+                <div class="nav">
+                    <a href="index.html" ><i class="fas fa-home"></i><span>Trang Chủ/ Menu</span></a>
+                </div>
+            </div>
+            <div class="row">
+                <div class="nav">
+                    <a href="room.html" class="active"><i class="fa-solid fa-door-open"></i><span>Danh Sách Phòng</span></a>
+                </div>
+            </div>            
+            <div class="row">
+                <div class="nav">
+                    <a href="contract.html"><i class="fa-solid fa-file-contract"></i><span>Danh Sách Hợp Đồng</span></a>
+                </div>
+            </div>
+            <div class="row">
+                <div class="nav">
+                    <a href="member.html"><i class="fa-solid fa-users"></i><span>Danh Sách Thành Viên</span></a>
+                </div>
+            </div>
+            <div class="row">
+                <div class="nav">
+                <a href="invoice.html"><i class="fa-solid fa-receipt"></i><span>Danh Sách Phiếu Thu</span></a>
+                </div>
+            </div> 
+        </div>
+
+       <!-- Main Content -->
+        <div class="main-content">
+            <div class="row">
+                <div class="section-title">
+                    <h2>THÔNG TIN PHÒNG</h2>
+                </div>    
+            </div>
+
+            <!-- Dòng Mã phòng -->
+            <div class="row form-row">
+                <label class="col-xs-3 col-sm-3 col-md-3 col-lg-2">Mã phòng :</label>
+                <div class="col-xs-9 col-sm-9 col-md-9 col-lg-10" style="display: inline-block;">
+                    <input type="text" id="room_nbr" name="room_nbr" value="" style="width: 100%;">    
+                </div>
+            </div>
+
+            <!-- Dòng Tên phòng -->
+            <div class="row form-row">
+                <label class="col-xs-3 col-sm-3 col-md-3 col-lg-2">Tên phòng :</label>
+                <div class="col-xs-9 col-sm-9 col-md-9 col-lg-10" style="display: inline-block;">
+                    <input type="text" id="name" name="name" value="" style="width: 100%;">
+                </div>
+            </div>
+
+            <!-- Dòng Trạng thái -->
+            <div class="row form-row">
+                <label class="col-xs-3 col-sm-3 col-md-3 col-lg-2">Trạng Thái:</label>
+                <div class="col-xs-9 col-sm-9 col-md-9 col-lg-10" style="display: inline-block;">
+                    <select id="status" name="status" style="width: 100%;">
+                        <option value="">-- Chọn trạng thái --</option>
+                        <option value="TRONG">TRONG</option>
+                        <option value="DANG_THUE">ĐANG_THUE</option>
+                        <option value="KHONG_CHO_THUE">KHONG_CHO_THUE</option>
+                    </select>   
+                </div>
+            </div>
+
+            <!-- Dòng Diện tích -->
+            <div class="row form-row">
+                <label class="col-xs-3 col-sm-3 col-md-3 col-lg-2">Diện tích (m²):</label>
+                <div class="col-xs-9 col-sm-9 col-md-9 col-lg-10" style="display: inline-block;">
+                    <input type="number" id="area" name="area" min="15" max="50" step="0.01" value="" style="width: 100%;"> 
+                </div>
+            </div>
+
+            <!-- Dòng Số người ở tối đa -->
+            <div class="row form-row">
+                <label class="col-xs-3 col-sm-3 col-md-3 col-lg-2">Số người ở tối đa:</label>
+                <div class="col-xs-9 col-sm-9 col-md-9 col-lg-10" style="display: inline-block;">
+                    <input type="number" id="max_qty_man" name="max_qty_man" min="1" max="5" value="" style="width: 100%;">   
+                </div>
+            </div>
+
+            <!-- Nhóm nút bấm -->
+           <div class="row btn-group" style="margin-top: 15px; font-size: 0;">
+                <button type="button" class="btn-add" id="btn-add" style="width: 120px; margin-right: 8px; margin-bottom: 8px;">Thêm Mới</button>
+                <button type="button" class="btn-update" id="btn-update" style="width: 120px; margin-right: 8px; margin-bottom: 8px;">Cập Nhật</button>
+                <button type="button" class="btn-delete" id="btn-delete" style="width: 100px; margin-right: 8px; margin-bottom: 8px;">Xóa</button>
+                <button type="button" class="btn-cancel" id="btn-cancel" style="width: 100px; margin-bottom: 8px;">Hủy</button>
+            </div>
+
+            <div class="row" style="margin-top: 20px;">
+                <div class="table-title">
+                    <h2>DANH SÁCH PHÒNG</h2>
+                </div>
+            </div>   
+             
+            <div class="row">
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Mã phòng</th>
+                                <th>Tên phòng</th>
+                                <th>Trạng thái</th>
+                                <th>Diện tích</th>
+                                <th>Số người ở tối đa</th>
+                            </tr>
+                        </thead>
+                        <tbody id="room-table-body">   
+                            <tr>
+                                <td>P001</td>
+                                <td>Phòng 1</td>
+                                <td>TRONG</td>
+                                <td>20.50</td>
+                                <td>5</td>
+                            </tr>
+                            <tr>
+                                <td>P002</td>
+                                <td>Phòng 2</td>
+                                <td>TRONG</td>
+                                <td>20.50</td>
+                                <td>5</td>
+                            </tr>
+                            <tr>
+                                <td>P003</td>
+                                <td>Phòng 3</td>
+                                <td>DANG_THUE</td>
+                                <td>20.50</td>
+                                <td>5</td>
+                            </tr>
+                            <tr>
+                                <td>P004</td>
+                                <td>Phòng 4</td>
+                                <td>KHONG_CHO_THUE</td>
+                                <td>20.50</td>
+                                <td>3</td>
+                            </tr>
+                            <tr>
+                                <td>P005</td>
+                                <td>Phòng 5</td>
+                                <td>DANG_THUE</td>
+                                <td>20.50</td>
+                                <td>4</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    <script src="js/room.js"></script>
+</body>
+</html>
+
+
