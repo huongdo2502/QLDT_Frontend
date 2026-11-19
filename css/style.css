@@ -146,7 +146,7 @@ body {
 
 .nav {
     display: block;
-    margin: 0px 10px; 
+    margin: 0 10px 8px 10px;
 }
 
 .nav a {
@@ -283,7 +283,7 @@ body.sidebar-collapsed .sidebar {
 }
 
 body.sidebar-collapsed .sidebar .nav {
-    margin: 8px 5px;
+    margin: 0 5px 8px 5px;
 }
 
 body.sidebar-collapsed .sidebar .nav a {
@@ -377,7 +377,7 @@ body.sidebar-collapsed .main-content {
 
     /* Đảm bảo nội dung menu đầy đủ chữ và icon */
     .sidebar .nav {
-        margin: 8px 10px !important;
+        margin: 0 10px 8px 10px !important;
         display: block !important;
     }
     .sidebar .nav a {
