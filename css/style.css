@@ -1,0 +1,663 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    min-height: 100vh;
+    margin: 0;
+    overflow-y: scroll;
+    background-color: #f4f6f8;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.row {
+   display: block;
+   font-size: 0;
+}
+
+/* --- Định nghĩa chung cho tất cả các cột --- */
+.col-xs-1, .col-xs-2, .col-xs-3, .col-xs-4, .col-xs-5, .col-xs-6, .col-xs-7, .col-xs-8, .col-xs-9, .col-xs-10, .col-xs-11, .col-xs-12,
+.col-sm-1, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9, .col-sm-10, .col-sm-11, .col-sm-12,
+.col-md-1, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9, .col-md-10, .col-md-11, .col-md-12,
+.col-lg-1, .col-lg-2, .col-lg-3, .col-lg-4, .col-lg-5, .col-lg-6, .col-lg-7, .col-lg-8, .col-lg-9, .col-lg-10, .col-lg-11, .col-lg-12 {
+    display: inline-block;
+    vertical-align: top;
+    box-sizing: border-box;
+    font-size: 14px;
+}
+
+/* --- Cố định độ rộng Header --- */
+.header-row {
+    width: 100%;
+    height: 60px;
+    background-color: #0d5d6e;
+    font-size: 0; /* Xóa khoảng trắng thừa giữa các khối inline-block */
+}
+
+.logo-col {
+    display: inline-block;
+    vertical-align: top;
+    width: 240px; /* Cố định độ rộng bằng Sidebar */
+    height: 60px;
+    text-align: center;
+    background-color: #094a57;
+    overflow: hidden;
+    white-space: nowrap; /* Chống rớt dòng chữ khi đang chạy hiệu ứng co giãn */
+    transition: width 0.3s ease;
+}
+
+.logo-text {
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 60px;
+    color: #ffffff;  
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4);
+}
+
+.bars-col {
+    display: inline-block;
+    vertical-align: top;
+    width: calc(100% - 240px);
+    height: 60px;
+    padding: 12px 6px; 
+    background-color: #0d5d6e;
+    white-space: nowrap; /* Chống rớt dòng tuyệt đối */
+    position: relative; /* Giúp định vị bên trong nếu cần */
+}
+
+/* Nút 3 gạch nằm ở góc trái */
+.btn-bars {
+    display: inline-block;
+    vertical-align: top;
+    height: 36px;
+    width: 36px;
+    background: transparent;
+    border: 1px solid #ccc;
+    color: #ffffff;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 6px;   
+}
+
+
+/* 2. Thu nhỏ max-width của ô tìm kiếm lại cho vừa vặn */
+.search-box {
+    display: inline-block;
+    font-size: 0;
+    vertical-align: top;
+    width: 300px; 
+    height: 36px;
+    position: relative;
+    background-color: #ffffff;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+    float: right;
+}
+
+.btn-bars:hover {
+    background-color: rgba(255, 255, 255, 0.15);
+}
+
+.search-box i {
+    position: absolute;
+    top: 50%;
+    left: 14px;
+    transform: translateY(-50%);
+    color: #7f8c8d;
+    font-size: 14px;
+}
+
+
+.search-box input {
+    width: 100%;
+    height: 36px;
+    padding: 0 15px 0 38px;
+    border: none;
+    outline: none;
+    background: transparent;
+    font-size: 14px;
+    color: #2c3e50;
+}
+
+.search-box input::placeholder {
+    color: #95a5a6;
+    font-style: italic;
+}
+
+/* --- Cố định độ rộng Sidebar --- */
+.sidebar {
+    display: inline-block;
+    vertical-align: top;
+    width: 240px; /* Cố định độ rộng khớp 100% với logo-col */
+    min-height: calc(100vh - 60px);
+    padding-top: 20px;
+    background-color: #0d5d6e;
+    color: #ffffff;
+    overflow: hidden;
+    white-space: nowrap; /* Chống rớt chữ menu khi co lại */
+    transition: width 0.3s ease;
+}
+
+.nav {
+    display: block;
+    margin: 0 10px 8px 10px;
+}
+
+.nav a {
+    display: block;
+    padding: 14px 18px; 
+    border-radius: 12px;
+    font-size: 15px;  
+    font-weight: 400;
+    color: #ffffff;
+    text-align: left;
+    text-decoration: none;
+    transition: background-color 0.2s; 
+}
+
+.nav a i {
+    display: inline-block;
+    width: 24px;
+    margin-right: 10px;
+    text-align: center;
+}
+
+.nav a:hover, .nav a.active {
+    background-color: rgba(255, 255, 255, 0.15);
+    font-weight: 600;  
+}
+
+/* --- Cố định độ rộng Main Content --- */
+.main-content {
+    display: inline-block;
+    vertical-align: top;
+    width: calc(100% - 240px); 
+    min-height: calc(100vh - 60px); 
+    padding: 20px;
+    transition: width 0.3s ease;
+}
+
+/* --- Tùy chỉnh phần Main Content --- */
+.main-content h2 {
+    color: #0d5d6e;
+    font-size: 22px;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+.main-content p {
+    color: #555555;
+    font-size: 15px;
+    margin-bottom: 20px;
+}
+
+.main-content ul.custom-row {
+    list-style: none;
+    padding: 0;
+    margin: 20px -10px 0 -10px; /* Bù trừ khoảng cách padding của các cột */
+    display: block; 
+}
+
+.main-content ul.custom-row > li {
+    display: inline-block;
+    vertical-align: top;
+    width: 100%;
+    padding: 10px; 
+    box-sizing: border-box;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Phần khung bên trong thẻ li (Stat-box) */
+.stat-box {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-left: 4px solid #0d5d6e;
+    border-radius: 6px;
+    padding: 15px;
+    height: 100%; /* Giúp các ô luôn cao bằng nhau */
+}
+
+/* --- Cấu hình các mốc chia cột (Breakpoints) --- */
+/* Màn hình nhỏ từ sm (>= 576px) và md (>= 768px): Chia 2 cột (mỗi cột 50%) */
+@media (min-width: 576px) {
+    .main-content ul.custom-row > li.col-sm-6,
+    .main-content ul.custom-row > li.col-md-6 { 
+        width: 50%; 
+    }
+}
+
+/* Màn hình lớn từ lg (>= 992px): Chia 4 cột (mỗi cột 25%) */
+@media (min-width: 992px) {
+    .main-content ul.custom-row > li.col-lg-3 { 
+        width: 25%; 
+    }
+}
+
+/* Hiệu ứng khi rê chuột vào từng thẻ thông kê */
+.main-content ul li:hover {
+    transform: translateY(-3px);
+}
+
+.main-content ul li:hover .stat-box {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.main-content ul li strong {
+    display: block;
+    color: #094a57;
+    font-size: 14px;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+    font-weight: 600;
+}
+
+/* =======================================================
+   TRẠNG THÁI THU GỌN (CỐ ĐỊNH 65px)
+   ======================================================= */
+.logo-col .logo-full { display: inline-block; }
+.logo-col .logo-short { display: none; }
+
+body.sidebar-collapsed .logo-col {
+    width: 65px;
+}
+body.sidebar-collapsed .logo-col .logo-full {
+    display: none;
+}
+body.sidebar-collapsed .logo-col .logo-short {
+    display: inline-block;
+    font-size: 16px;
+}
+
+body.sidebar-collapsed .bars-col {
+    width: calc(100% - 65px);
+}
+
+body.sidebar-collapsed .sidebar {
+    width: 65px;
+}
+
+body.sidebar-collapsed .sidebar .nav {
+    margin: 0 5px 8px 5px;
+}
+
+body.sidebar-collapsed .sidebar .nav a {
+    padding: 14px 0;
+    text-align: center;
+}
+
+body.sidebar-collapsed .sidebar .nav a i {
+    margin-right: 0;
+    font-size: 16px;
+}
+
+body.sidebar-collapsed .sidebar .nav a span {
+    display: none; /* Ẩn chữ menu mượt mà, không bị bể dòng */
+}
+
+body.sidebar-collapsed .main-content {
+    width: calc(100% - 65px);
+}
+
+@media (max-width: 767.98px) {
+    /* 1. Cố định phần Header hàng 2 chứa nút 3 gạch luôn nổi lên trên cùng */
+    .header-row {
+        position: fixed !important;
+        top: 0 !important;
+        left: 0 !important;
+        width: 100% !important;
+        z-index: 100000 !important; /* Luôn nằm trên các thành phần khác */
+        display: block !important;
+        height: auto !important;
+    }
+
+    /* Hàng 1: Logo QLDT */
+    .logo-col {
+        display: block !important;
+        width: 100% !important;
+        height: 45px !important;
+        text-align: center !important;
+        background-color: #094a57;
+    }
+    .logo-col .logo-full {
+        display: inline-block !important;
+        font-size: 15px !important;
+        line-height: 45px !important;
+    }
+    .logo-col .logo-short {
+        display: none !important;
+    }
+
+    /* Hàng 2: Nút 3 gạch */
+    .bars-col {
+        display: block !important;
+        width: 100% !important;
+        height: 45px !important;
+        padding: 5px 15px !important;
+        background-color: #0d5d6e;
+    }
+
+    .bars-col {
+        height: 45px !important;
+        padding: 5px 15px !important;
+    }
+
+    .btn-bars {
+        height: 34px;
+        width: 34px;
+    }
+
+    .search-box {
+        width: 170px; /* Thu ngắn lại trên mobile cho vừa khít màn hình nhỏ */
+        margin-top: -1px;
+    }
+
+    /* 2. Sidebar trượt ra nằm ngay bên dưới header (từ top: 90px trở xuống) */
+    .sidebar {
+        display: none !important;
+        position: fixed !important;
+        top: 90px !important; /* Nằm dưới 2 hàng header (45px + 45px) */
+        left: 0 !important;
+        width: 240px !important;
+        height: calc(100vh - 90px) !important;
+        z-index: 99999 !important; /* Thấp hơn header một chút để nút bars không bị che */
+        box-shadow: 5px 0 15px rgba(0, 0, 0, 0.4) !important;
+        background-color: #0d5d6e !important;
+        overflow-y: auto !important;
+    }
+
+    .sidebar.show {
+        display: inline-block !important;
+    }
+
+    /* Đảm bảo nội dung menu đầy đủ chữ và icon */
+    .sidebar .nav {
+        margin: 0 10px 8px 10px !important;
+        display: block !important;
+    }
+    .sidebar .nav a {
+        padding: 14px 18px !important;
+        text-align: left !important;
+        white-space: nowrap !important;
+        font-size: 15px !important;
+    }
+    .sidebar .nav a i {
+        margin-right: 12px !important;
+        display: inline-block !important;
+        font-size: 16px !important;
+    }
+    .sidebar .nav a span {
+        display: inline !important;
+    }
+
+    /* 3. Đẩy phần nội dung chính xuống dưới header cố định để không bị che khuất */
+    .main-content {
+        display: inline-block !important;
+        vertical-align: top !important;
+        width: 100% !important;
+        font-size: 14px !important;
+        padding: 20px !important;
+        padding-top: 110px !important; /* Chừa khoảng trống cho header 2 hàng phía trên */
+        background-color: #f4f6f8;
+    }
+
+    /* Khi sidebar mở (.show), đẩy phần main-content dịch sang phải 240px và thu nhỏ lại */
+    .sidebar.show ~ .main-content {
+        transform: translateX(240px);
+        width: calc(100% - 240px) !important;
+        transition: transform 0.3s ease, width 0.3s ease;
+    }
+}
+
+/* --- Tiêu đề mục --- */
+.main-content .section-title h2,
+.main-content .table-title h2 {
+    color: #0d5d6e;
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 16px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid #0d5d6e;
+}
+
+/* --- Các dòng Form --- */
+.main-content .form-row {
+    margin-bottom: 14px;
+    font-size: 0;
+}
+
+.main-content .form-row > label {
+    display: inline-block;
+    vertical-align: middle;
+    font-size: 14px;
+    font-weight: 600;
+    color: #2c3e50;
+    padding-right: 12px;
+    line-height: 36px;
+    box-sizing: border-box;
+}
+
+.main-content .form-row > div {
+    display: inline-block;
+    vertical-align: middle;
+    font-size: 14px;
+    box-sizing: border-box;
+}
+
+.main-content .form-row input[type="text"],
+.main-content .form-row input[type="number"],
+.main-content .form-row input[type="date"],
+.main-content .form-row select {
+    width: 100%;
+    height: 36px;
+    padding: 6px 12px;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    background-color: #ffffff;
+    font-size: 14px;
+    font-family: inherit;
+    color: #2c3e50;
+    box-sizing: border-box;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.main-content .form-row input:focus,
+.main-content .form-row select:focus {
+    outline: none;
+    border-color: #0d5d6e;
+    box-shadow: 0 0 0 3px rgba(13, 93, 110, 0.15);
+}
+
+/* Tạo khoảng cách giữa cột bên trái và label bên phải trên màn hình >= 768px */
+@media (min-width: 768px) {
+    .main-content .form-row .input-group-col {
+        padding-right: 24px;
+    }
+}
+
+/* Tạo khoảng cách dưới khi rớt dòng trên màn hình < 768px */
+@media (max-width: 767.98px) {
+    .main-content .form-row .input-group-col {
+        margin-bottom: 14px;
+    }
+}
+
+/* --- Nhóm nút bấm --- */
+.main-content .btn-group {
+    font-size: 0;
+}
+
+.main-content .btn-group button {
+    display: inline-block;
+    vertical-align: middle;
+    box-sizing: border-box;
+    width: 120px;
+    height: 36px;
+    margin-right: 8px;
+    margin-bottom: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 1;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    color: #ffffff;
+    transition: opacity 0.2s ease, transform 0.15s ease;
+}
+
+.main-content .btn-group button:hover {
+    opacity: 0.92;
+    transform: translateY(-1px);
+}
+
+.main-content .btn-group button:active {
+    transform: translateY(0);
+}
+
+.btn-add {
+    background-color: #0d5d6e;
+}
+
+.btn-update {
+    background-color: #d97706;
+}
+
+.btn-delete {
+    background-color: #dc2626;
+}
+
+.btn-cancel {
+    background-color: #94a3b8;
+}
+
+/* --- Bảng danh sách --- */
+.main-content .table-container {
+    width: 100%;
+    overflow-x: auto;
+    background-color: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+}
+
+.main-content .table-container table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+    text-align: left;
+}
+
+.main-content .table-container thead {
+    background-color: #0d5d6e;
+    color: #ffffff;
+}
+
+.main-content .table-container th,
+.main-content .table-container td {
+    padding: 11px 14px;
+    border-bottom: 1px solid #e2e8f0;
+    white-space: nowrap;
+}
+
+.main-content .table-container th {
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.main-content .table-container tbody tr:nth-child(even) {
+    background-color: #f8fafc;
+}
+
+.main-content .table-container tbody tr:hover {
+    background-color: #e6f4f6;
+    cursor: pointer;
+}
+
+.main-content .table-container tbody tr:last-child td {
+    border-bottom: none;
+}
+
+/* --- Responsive cho màn hình nhỏ (< 576px) --- */
+@media (max-width: 575.98px) {
+    .main-content .form-row > label,
+    .main-content .form-row > div {
+        display: block !important;
+        width: 100% !important;
+        line-height: 1.4;
+        padding-right: 0;
+    }
+
+    .main-content .form-row > label {
+        margin-bottom: 6px;
+    }
+
+    .main-content .btn-group button {
+        width: calc(50% - 4px) !important;
+        margin-right: 0 !important;
+    }
+
+    .main-content .btn-group button:nth-child(odd) {
+        margin-right: 8px !important;
+    }
+}
+
+/* --- Hệ thống lưới 12 cột dùng chung --- */
+.col-xs-1  { width: 8.3333%; }
+.col-xs-2  { width: 16.6667%; }
+.col-xs-3  { width: 25%; }
+.col-xs-4  { width: 33.3333%; }
+.col-xs-5  { width: 41.6667%; }
+.col-xs-6  { width: 50%; }
+.col-xs-7  { width: 58.3333%; }
+.col-xs-8  { width: 66.6667%; }
+.col-xs-9  { width: 75%; }
+.col-xs-10 { width: 83.3333%; }
+.col-xs-11 { width: 91.6667%; }
+.col-xs-12 { width: 100%; }
+
+@media (min-width: 576px) {
+    .col-sm-1  { width: 8.3333%; }
+    .col-sm-2  { width: 16.6667%; }
+    .col-sm-3  { width: 25%; }
+    .col-sm-4  { width: 33.3333%; }
+    .col-sm-5  { width: 41.6667%; }
+    .col-sm-6  { width: 50%; }
+    .col-sm-7  { width: 58.3333%; }
+    .col-sm-8  { width: 66.6667%; }
+    .col-sm-9  { width: 75%; }
+    .col-sm-10 { width: 83.3333%; }
+    .col-sm-11 { width: 91.6667%; }
+    .col-sm-12 { width: 100%; }
+}
+
+@media (min-width: 768px) {
+    .col-md-1  { width: 8.3333%; }
+    .col-md-2  { width: 16.6667%; }
+    .col-md-3  { width: 25%; }
+    .col-md-4  { width: 33.3333%; }
+    .col-md-5  { width: 41.6667%; }
+    .col-md-6  { width: 50%; }
+    .col-md-7  { width: 58.3333%; }
+    .col-md-8  { width: 66.6667%; }
+    .col-md-9  { width: 75%; }
+    .col-md-10 { width: 83.3333%; }
+    .col-md-11 { width: 91.6667%; }
+    .col-md-12 { width: 100%; }
+}
+
+@media (min-width: 992px) {
+    .col-lg-1  { width: 8.3333%; }
+    .col-lg-2  { width: 16.6667%; }
+    .col-lg-3  { width: 25%; }
+    .col-lg-4  { width: 33.3333%; }
+    .col-lg-5  { width: 41.6667%; }
+    .col-lg-6  { width: 50%; }
+    .col-lg-7  { width: 58.3333%; }
+    .col-lg-8  { width: 66.6667%; }
+    .col-lg-9  { width: 75%; }
+    .col-lg-10 { width: 83.3333%; }
+    .col-lg-11 { width: 91.6667%; }
+    .col-lg-12 { width: 100%; }
+}

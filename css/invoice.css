@@ -1,0 +1,191 @@
+/* --- Tiêu đề mục --- */
+.main-content .section-title h2,
+.main-content .table-title h2 {
+    color: #0d5d6e;
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 16px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid #0d5d6e;
+}
+
+/* --- Các dòng Form --- */
+.main-content .form-row {
+    margin-bottom: 8px !important;;
+    font-size: 0;
+}
+
+.main-content .form-row > label {
+    display: inline-block;
+    vertical-align: middle;
+    font-size: 14px;
+    font-weight: 600;
+    color: #2c3e50;
+    padding-right: 12px;
+    line-height: 36px;
+    box-sizing: border-box;
+}
+
+.main-content .form-row > div {
+    display: inline-block;
+    vertical-align: middle;
+    font-size: 14px;
+    box-sizing: border-box;
+}
+
+.main-content .form-row input[type="text"],
+.main-content .form-row input[type="number"],
+.main-content .form-row input[type="date"],
+.main-content .form-row select {
+    width: 100%;
+    height: 36px;
+    padding: 6px 12px;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    background-color: #ffffff;
+    font-size: 14px;
+    font-family: inherit;
+    color: #2c3e50;
+    box-sizing: border-box;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.main-content .form-row input:focus,
+.main-content .form-row select:focus {
+    outline: none;
+    border-color: #0d5d6e;
+    box-shadow: 0 0 0 3px rgba(13, 93, 110, 0.15);
+}
+
+/* Tạo khoảng cách giữa cột bên trái và label bên phải trên màn hình >= 768px */
+@media (min-width: 768px) {
+    .main-content .form-row .input-group-col {
+        padding-right: 24px;
+    }
+}
+
+/* Tạo khoảng cách dưới khi rớt dòng trên màn hình < 768px */
+@media (max-width: 767.98px) {
+    .main-content .form-row .input-group-col {
+        margin-bottom: 4px;
+    }
+}
+
+/* --- Nhóm nút bấm --- */
+.main-content .btn-group {
+    font-size: 0;
+}
+
+.main-content .btn-group button {
+    display: inline-block;
+    vertical-align: middle;
+    box-sizing: border-box;
+    width: 120px;
+    height: 36px;
+    margin-right: 8px;
+    margin-bottom: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 1;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    color: #ffffff;
+    transition: opacity 0.2s ease, transform 0.15s ease;
+}
+
+.main-content .btn-group button:hover {
+    opacity: 0.92;
+    transform: translateY(-1px);
+}
+
+.main-content .btn-group button:active {
+    transform: translateY(0);
+}
+
+.btn-add {
+    background-color: #0d5d6e;
+}
+
+.btn-update {
+    background-color: #d97706;
+}
+
+.btn-delete {
+    background-color: #dc2626;
+}
+
+.btn-cancel {
+    background-color: #94a3b8;
+}
+
+/* --- Bảng danh sách --- */
+.main-content .table-container {
+    width: 100%;
+    overflow-x: auto;
+    background-color: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+}
+
+.main-content .table-container table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+    text-align: left;
+}
+
+.main-content .table-container thead {
+    background-color: #0d5d6e;
+    color: #ffffff;
+}
+
+.main-content .table-container th,
+.main-content .table-container td {
+    padding: 11px 14px;
+    border-bottom: 1px solid #e2e8f0;
+    white-space: nowrap;
+}
+
+.main-content .table-container th {
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.main-content .table-container tbody tr:nth-child(even) {
+    background-color: #f8fafc;
+}
+
+.main-content .table-container tbody tr:hover {
+    background-color: #e6f4f6;
+    cursor: pointer;
+}
+
+.main-content .table-container tbody tr:last-child td {
+    border-bottom: none;
+}
+
+/* --- Responsive cho màn hình nhỏ (< 576px) --- */
+@media (max-width: 575.98px) {
+    .main-content .form-row > label,
+    .main-content .form-row > div {
+        display: block !important;
+        width: 100% !important;
+        line-height: 1.4;
+        padding-right: 0;
+    }
+
+    .main-content .form-row > label {
+        margin-bottom: 6px;
+    }
+
+    .main-content .btn-group button {
+        width: calc(50% - 4px) !important;
+        margin-right: 0 !important;
+    }
+
+    .main-content .btn-group button:nth-child(odd) {
+        margin-right: 8px !important;
+    }
+}
