@@ -72,13 +72,21 @@
 }
 
 /* --- Nhóm nút bấm --- */
+.main-content .btn-group {
+    font-size: 0;
+}
+
 .main-content .btn-group button {
+    display: inline-block;
+    vertical-align: middle;
+    box-sizing: border-box;
     width: 120px;
     height: 36px;
     margin-right: 8px;
     margin-bottom: 8px;
     font-size: 14px;
     font-weight: 600;
+    line-height: 1;
     border: none;
     border-radius: 6px;
     cursor: pointer;
