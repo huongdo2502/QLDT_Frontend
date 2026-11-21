@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Danh Sách Phiếu Thu - QLDT</title>
+    <!-- Thư viện SweetAlert2 & Font Awesome -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- 1. Khung giao diện chung -->
+    <link rel="stylesheet" href="css/style.css">
+    <!-- 2. Style riêng cho trang Phiếu Thu -->
+    <link rel="stylesheet" href="css/invoce.css">
+</head>
+<body>
+    <div class="row">
+        <!-- Header Row -->
+        <div class="row header-row">
+            <div class="logo-col" id="logoCol">
+                <span class="logo-text logo-full">QUAN-LY-DAY-TRO</span>
+                <span class="logo-text logo-short">QLDT</span>
+            </div>
+            
+            <div class="bars-col">
+                <button type="button" class="btn-bars">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+
+                <!-- Đặt search-box BÊN TRONG bars-col -->
+                <div class="search-box">
+                    <form action="#" method="GET" id="searchForm">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                        <input type="text" id="searchInput" placeholder="Tìm phòng, khách thuê...">
+                    </form>
+                </div>
+            </div>               
+        </div>
+
+        <!-- Sidebar -->
+        <div class="sidebar" id="sidebar">
+            <div class="row">
+                <div class="nav">
+                    <a href="index.html"><i class="fas fa-home"></i><span>Trang Chủ/ Menu</span></a>
+                </div>
+            </div>
+            <div class="row">
+                <div class="nav">
+                    <a href="room.html"><i class="fa-solid fa-door-open"></i><span>Danh Sách Phòng</span></a>
+                </div>
+            </div>            
+            <div class="row">
+                <div class="nav">
+                    <a href="contract.html"><i class="fa-solid fa-file-contract"></i><span>Danh Sách Hợp Đồng</span></a>
+                </div>
+            </div>
+            <div class="row">
+                <div class="nav">
+                    <a href="member.html"><i class="fa-solid fa-users"></i><span>Danh Sách Thành Viên</span></a>
+                </div>
+            </div>
+            <div class="row">
+                <div class="nav">
+                    <a href="invoice.html" class="active"><i class="fa-solid fa-receipt"></i><span>Danh Sách Phiếu Thu</span></a>
+                </div>
+            </div> 
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <div class="row">
+                <div class="section-title">
+                    <h2>THÔNG TIN PHIẾU THU</h2>
+                </div>    
+            </div>
+
+            <!-- DÒNG THÁNG, NĂM, MÃ HỢP ĐỒNG -->
+            <div class="row form-row">
+                <label class="col-xs-4 col-sm-3 col-md-2 col-lg-2">Tháng :</label>
+                <div class="col-xs-8 col-sm-9 col-md-4 col-lg-2 input-group-col">
+                    <input type="number" id="billing_month" name="billing_month" min="1" max="12" value="">
+                </div>
+
+                <label class="col-xs-4 col-sm-3 col-md-2 col-lg-2">Năm :</label>
+                <div class="col-xs-8 col-sm-9 col-md-4 col-lg-2 input-group-col">
+                    <input type="number" id="billing_year" name="billing_year" min="2000" max="2100" value=""> 
+                </div>
+
+                <label class="col-xs-4 col-sm-3 col-md-2 col-lg-2">Mã Hợp Đồng :</label>
+                <div class="col-xs-8 col-sm-9 col-md-4 col-lg-2">
+                    <input type="text" id="contract_nbr" name="contract_nbr" value="">
+                </div>                   
+            </div>
+
+            <!-- DÒNG TIỀN PHÒNG, CHỈ SỐ ĐIỆN CŨ, CHỈ SỐ ĐIỆN MỚI -->
+            <div class="row form-row">
+                <label class="col-xs-4 col-sm-3 col-md-2 col-lg-2">Tiền phòng (VNĐ) :</label>
+                <div class="col-xs-8 col-sm-9 col-md-4 col-lg-2 input-group-col">
+                    <input type="number" id="price" name="price" value="0">
+                </div>
+
+                <label class="col-xs-4 col-sm-3 col-md-2 col-lg-2">Chỉ số điện cũ :</label>
+                <div class="col-xs-8 col-sm-9 col-md-4 col-lg-2 input-group-col">
+                    <input type="number" id="old_electric_reading" name="old_electric_reading" min="0" value="0">    
+                </div>
+
+                <label class="col-xs-4 col-sm-3 col-md-2 col-lg-2">Chỉ số điện mới :</label>
+                <div class="col-xs-8 col-sm-9 col-md-4 col-lg-2">
+                    <input type="number" id="new_electric_reading" name="new_electric_reading" min="0" value="0">
+                </div>                   
+            </div>
+
+            <!-- DÒNG GIÁ ĐIỆN, TIỀN ĐIỆN, CHỈ SỐ NƯỚC CŨ -->
+            <div class="row form-row">
+                <label class="col-xs-4 col-sm-3 col-md-2 col-lg-2">Giá Điện (VNĐ/kWh) :</label>
+                <div class="col-xs-8 col-sm-9 col-md-4 col-lg-2 input-group-col">
+                    <input type="number" id="electric_price" name="electric_price" min="0" value="0"> 
+                </div>
+
+                <label class="col-xs-4 col-sm-3 col-md-2 col-lg-2">Tiền Điện (VNĐ) :</label>
+                <div class="col-xs-8 col-sm-9 col-md-4 col-lg-2 input-group-col">
+                    <input type="number" id="electric_amount" name="electric_amount" min="0" value="0">     
+                </div>
+
+                <label class="col-xs-4 col-sm-3 col-md-2 col-lg-2">Chỉ số nước cũ :</label>
+                <div class="col-xs-8 col-sm-9 col-md-4 col-lg-2">
+                    <input type="number" id="old_water_reading" name="old_water_reading" min="0" value="0">  
+                </div>                   
+            </div>
+            
+            <!-- DÒNG CHỈ SỐ NƯỚC MỚI, GIÁ NƯỚC, TIỀN NƯỚC -->
+            <div class="row form-row">
+                <label class="col-xs-4 col-sm-3 col-md-2 col-lg-2">Chỉ số nước mới :</label>
+                <div class="col-xs-8 col-sm-9 col-md-4 col-lg-2 input-group-col">
+                    <input type="number" id="new_water_reading" name="new_water_reading" min="0" value="0">
+                </div>
+
+                <label class="col-xs-4 col-sm-3 col-md-2 col-lg-2">Giá Nước (VNĐ/m³) :</label>
+                <div class="col-xs-8 col-sm-9 col-md-4 col-lg-2 input-group-col">
+                    <input type="number" id="water_price" name="water_price" min="0" value="0">   
+                </div>
+
+                <label class="col-xs-4 col-sm-3 col-md-2 col-lg-2">Tiền Nước (VNĐ) :</label>
+                <div class="col-xs-8 col-sm-9 col-md-4 col-lg-2">
+                    <input type="number" id="water_amount" name="water_amount" min="0" value="0"> 
+                </div>                   
+            </div>
+            
+            <!-- DÒNG TIỀN RÁC, TIỀN AN NINH, TỔNG TIỀN -->
+            <div class="row form-row">
+                <label class="col-xs-4 col-sm-3 col-md-2 col-lg-2">Tiền Rác (VNĐ) :</label>
+                <div class="col-xs-8 col-sm-9 col-md-4 col-lg-2 input-group-col">
+                    <input type="number" id="trash_fee" name="trash_fee" min="0" value="0">
+                </div>
+
+                <label class="col-xs-4 col-sm-3 col-md-2 col-lg-2">Tiền An Ninh (VNĐ) :</label>
+                <div class="col-xs-8 col-sm-9 col-md-4 col-lg-2 input-group-col">
+                    <input type="number" id="security_fee" name="security_fee" min="0" value="0">  
+                </div>
+
+                <label class="col-xs-4 col-sm-3 col-md-2 col-lg-2">Tổng tiền (VNĐ) :</label>
+                <div class="col-xs-8 col-sm-9 col-md-4 col-lg-2">
+                    <input type="number" id="total_amount" name="total_amount" min="0" value="0">   
+                </div>                   
+            </div>
+            
+            <!-- DÒNG TRẠNG THÁI, NGÀY THU, TRẢ PHÒNG -->
+            <div class="row form-row">
+                <label class="col-xs-4 col-sm-3 col-md-2 col-lg-2">Trạng Thái :</label>
+                <div class="col-xs-8 col-sm-9 col-md-4 col-lg-2 input-group-col">
+                    <select id="payment_status" name="payment_status">
+                        <option value="DA_THU">DA_THU</option>
+                        <option value="CHUA_THU">CHUA_THU</option>                    
+                    </select>
+                </div>
+
+                <label class="col-xs-4 col-sm-3 col-md-2 col-lg-2">Ngày Thu :</label>
+                <div class="col-xs-8 col-sm-9 col-md-4 col-lg-2 input-group-col">
+                    <input type="date" id="collection_date" name="collection_date"> 
+                </div>
+
+                <label class="col-xs-4 col-sm-3 col-md-2 col-lg-2">Trả Phòng :</label>
+                <div class="col-xs-8 col-sm-9 col-md-4 col-lg-2">
+                    <input type="checkbox" id="is_checkout" name="is_checkout" value="true" style="width: auto; margin-top: 5px;"> 
+                </div>                   
+            </div>
+           
+            <!-- Nhóm nút bấm -->
+            <div class="row btn-group" style="margin-top: 15px; font-size: 0;">
+                <button type="button" class="btn-add" id="btn-add">Thêm Mới</button>
+                <button type="button" class="btn-update" id="btn-update">Cập Nhật</button>
+                <button type="button" class="btn-delete" id="btn-delete">Xóa</button>
+                <button type="button" class="btn-cancel" id="btn-cancel">Hủy</button>
+            </div>
+
+            <div class="row" style="margin-top: 20px;">
+                <div class="table-title">
+                    <h2>DANH SÁCH PHIẾU THU</h2>
+                </div>
+            </div>   
+             
+            <!-- Đã thêm class table-container để nhận CSS -->
+            <div class="row table-container invoice">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Tháng</th>
+                            <th>Năm</th>
+                            <th>Mã hợp đồng</th>
+                            <th>Tiền phòng</th>
+                            <th>Chỉ số điện cũ</th>
+                            <th>Chỉ số điện mới</th>
+                            <th>Giá điện</th>
+                            <th>Tiền điện</th>
+                            <th>Chỉ số nước cũ</th>
+                            <th>Chỉ số nước mới</th>
+                            <th>Giá nước</th>
+                            <th>Tiền nước</th>
+                            <th>Tiền rác</th>
+                            <th>Tiền an ninh</th>
+                            <th>Tổng tiền</th>
+                            <th>Trạng thái</th>
+                            <th>Ngày thu</th>
+                            <th>Trả phòng</th>                     
+                        </tr>
+                    </thead>
+                    <tbody id="invoice-table-body">
+                        <!-- Dữ liệu mẫu -->
+                        <tr>
+                            <td>9</td>
+                            <td>2026</td>
+                            <td>HD001</td>
+                            <td>1000000</td>
+                            <td>1234</td>
+                            <td>1270</td>
+                            <td>4000</td>
+                            <td></td>
+                            <td>45</td>
+                            <td>56</td>
+                            <td>10000</td>
+                            <td></td>
+                            <td>15000</td>
+                            <td>15000</td>
+                            <td></td>
+                            <td>CHUA_THU</td>
+                            <td></td>
+                            <td>không</td>
+                        </tr>
+
+                        <tr>
+                            <td>9</td>
+                            <td>2026</td>
+                            <td>HD002</td>
+                            <td>1000000</td>
+                            <td>1234</td>
+                            <td>1270</td>
+                            <td>4000</td>
+                            <td></td>
+                            <td>45</td>
+                            <td>56</td>
+                            <td>10000</td>
+                            <td></td>
+                            <td>15000</td>
+                            <td>15000</td>
+                            <td></td>
+                            <td>CHUA_THU</td>
+                            <td></td>
+                            <td>không</td>
+                        </tr>
+
+                        <tr>
+                            <td>9</td>
+                            <td>2026</td>
+                            <td>HD003</td>
+                            <td>1000000</td>
+                            <td>1234</td>
+                            <td>1270</td>
+                            <td>4000</td>
+                            <td></td>
+                            <td>45</td>
+                            <td>56</td>
+                            <td>10000</td>
+                            <td></td>
+                            <td>15000</td>
+                            <td>15000</td>
+                            <td></td>
+                            <td>CHUA_THU</td>
+                            <td></td>
+                            <td>không</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <script src="js/invoice.js"></script>
+</body>
+</html>
