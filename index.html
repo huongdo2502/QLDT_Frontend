@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản lý dãy trọ - Tổng quan</title>
+    <!-- Thư viện SweetAlert2 & Font Awesome -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="row">
+    <!-- Header Row -->
+        <div class="row header-row">
+            <div class="logo-col" id="logoCol">
+                <span class="logo-text logo-full">QUAN-LY-DAY-TRO</span>
+                <span class="logo-text logo-short">QLDT</span>
+            </div>
+            
+            <div class="bars-col">
+                <button type="button" class="btn-bars">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+
+                <!-- Đặt search-box BÊN TRONG bars-col -->
+                <div class="search-box">
+                    <form action="#" method="GET" id="searchForm">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                        <input type="text" id="searchInput" placeholder="Tìm phòng, khách thuê...">
+                    </form>
+                </div>
+            </div>   
+        </div>
+
+        <!-- Sidebar -->
+        <div class="sidebar" id="sidebar">
+            <div class="row">
+                <div class="nav">
+                    <a href="index.html" class="active"><i class="fas fa-home"></i><span>Trang Chủ/ Menu</span></a>
+                </div>
+            </div>
+            <div class="row">
+                <div class="nav">
+                    <a href="room.html"><i class="fa-solid fa-door-open"></i><span>Danh Sách Phòng</span></a>
+                </div>
+            </div>            
+            <div class="row">
+                <div class="nav">
+                    <a href="contract.html"><i class="fa-solid fa-file-contract"></i><span>Danh Sách Hợp Đồng</span></a>
+                </div>
+            </div>
+            <div class="row">
+                <div class="nav">
+                    <a href="member.html"><i class="fa-solid fa-users"></i><span>Danh Sách Thành Viên</span></a>
+                </div>
+            </div>
+            <div class="row">
+                <div class="nav">
+                <a href="invoice.html"><i class="fa-solid fa-receipt"></i><span>Danh Sách Phiếu Thu</span></a>
+                </div>
+            </div> 
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <div class="section-title">
+                <h2>TRANG CHỦ QUẢN LÝ DÃY TRỌ</h2>
+            </div>
+            <p>Chào mừng bạn đến với hệ thống quản lý dãy trọ. Dưới đây là thông tin tóm tắt tình hình hiện tại:</p>
+            <ul class="custom-row">
+                <li class="col-sm-6 col-md-6 col-lg-3">
+                    <div class="stat-box">
+                        <strong>Tổng số phòng</strong>
+                        <span class="stat-value">20 phòng</span>
+                    </div>
+                </li>
+                <li class="col-sm-6 col-md-6 col-lg-3">
+                    <div class="stat-box">
+                        <strong>Đang cho thuê</strong>
+                        <span class="stat-value">16 phòng</span>
+                    </div>
+                </li>
+                <li class="col-sm-6 col-md-6 col-lg-3">
+                    <div class="stat-box">
+                        <strong>Phòng trống</strong>
+                        <span class="stat-value">4 phòng</span>
+                    </div>
+                </li>
+                <li class="col-sm-6 col-md-6 col-lg-3">
+                    <div class="stat-box">
+                        <strong>Hợp đồng sắp hết hạn</strong>
+                        <span class="stat-value">2 phòng</span>
+                        <small class="stat-note">(Cần kiểm tra mục Hợp đồng)</small>
+                    </div>
+                </li>
+            </ul>     
+        </div>
+    </div>
+    <script src="js/main.js"></script>
+</body>
+</html>
+
+
