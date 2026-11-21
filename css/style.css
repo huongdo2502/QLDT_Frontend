@@ -83,20 +83,18 @@ body {
     border-radius: 6px;
 }
 
-
 /* 2. Thu nhỏ max-width của ô tìm kiếm lại cho vừa vặn */
 .search-box {
     display: inline-block;
     font-size: 0;
     vertical-align: middle;
-    width: 250px; 
+    width: 250px;
     height: 36px;
     position: relative;
     background-color: #ffffff;
     border-radius: 20px;
     overflow: hidden;
     box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
-    margin-top: 2px;
     float: right;
 }
 
@@ -118,6 +116,7 @@ body {
     width: 100%;
     height: 32px;
     padding: 0 15px 0 38px; 
+    
     border: none;
     outline: none;
     background: transparent;
